@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>update</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
+</head>
+<body>
+
+   <header class="header">
+      <section class="flex">
+         <a href="home.html" class="logo">NALANTI</a>
+   
+         <form id="search-form" class="search-form">
+            <input type="text" id="search-box" name="search_box" required placeholder="Search Courses..." maxlength="100">
+            <button type="submit" class="fas fa-search"></button>
+         </form>
+   
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="toggle-btn" class="fas fa-sun"></div>
+         </div>
+   
+         <div class="profile">
+            <img src="" id="profile-pic" class="image" alt="Profile Picture">
+            <h3 class="name" id="profile-name">Student</h3>
+            <p class="role">Student</p>
+            <a href="profile.html" class="btn">View Profile</a>
+            <div class="flex-btn">
+               <a href="login.html" class="option-btn">Login</a>
+               <a href="register.html" class="option-btn">Register</a>
+            </div>
+         </div>
+      </section>
+   </header>   
+   
+   <div class="side-bar">
+      <div id="close-btn">
+         <i class="fas fa-times"></i>
+      </div>
+   
+      <div class="profile">
+         <img src="" id="sidebar-profile-pic" class="image" alt="Profile Picture">
+         <h3 class="name" id="sidebar-profile-name">Student</h3>
+         <p class="role">Student</p>
+         <a href="profile.html" class="btn">View Profile</a>
+      </div>
+
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+   </nav>
+
+</div>
+
+<section class="form-container">
+
+   <form action="" method="post" enctype="multipart/form-data">
+      <h3>Update Profile</h3>
+      <p>Update Name</p>
+      <input type="text" name="name" placeholder="Enter New Name" maxlength="50" class="box">
+      <p>Update E-mail</p>
+      <input type="email" name="email" placeholder="Enter New E-mail" maxlength="50" class="box">
+      <p>Previous Password</p>
+      <input type="password" name="old_pass" placeholder="Enter Your Old Password" maxlength="20" class="box">
+      <p>New Password</p>
+      <input type="password" name="new_pass" placeholder="Enter Your Old Password" maxlength="20" class="box">
+      <p>Confirm Password</p>
+      <input type="password" name="c_pass" placeholder="confirm Your New Password" maxlength="20" class="box">
+      <p>Update Pic</p>
+      <input type="file" accept="image/*" class="box">
+      <input type="submit" value="update profile" name="submit" class="btn">
+   </form>
+
+</section>
+<script src="js/script.js"></script>
+<script>
+   document.getElementById('search-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      
+      const searchQuery = document.getElementById('search-box').value.trim().toLowerCase();
+   
+      // Mapping of search queries to corresponding course pages
+      const coursePages = {
+         'html': 'html.html',
+         'css': 'css.html',
+         'javascript': 'javascript.html',
+         'react': 'react.html',
+         'php': 'php.html',
+         'aiml': 'aiml.html',
+         'casa': 'casa.html',
+         'discrete structure': 'discrete_structure.html',
+         'dsa': 'dsa.html',
+         'computer architecture': 'computer_architecture.html',
+         'software engineering': 'software_engineering.html',
+         'dbms': 'dbms.html'
+      };
+   
+      // Redirect to the corresponding course page if it exists
+      if (coursePages[searchQuery]) {
+         window.location.href = coursePages[searchQuery];
+      } else {
+         alert('Course not found!');
+      }
+   });
+
+   document.addEventListener('DOMContentLoaded', function() {
+   // Retrieve the stored name and picture URL from localStorage
+   const name = localStorage.getItem('profileName') || 'Student';
+   const pic = localStorage.getItem('profilePic') || 'images/default-pic.jpg';
+
+   // Update the profile section in the header
+   document.getElementById('profile-name').textContent = name;
+   document.getElementById('profile-pic').src = pic;
+
+   // Update the profile section in the sidebar
+   document.getElementById('sidebar-profile-name').textContent = name;
+   document.getElementById('sidebar-profile-pic').src = pic;
+});
+   </script>
+   
+</body>
+</html>

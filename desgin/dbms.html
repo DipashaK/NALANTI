@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>video playlist</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
+</head>
+<body>
+
+   <header class="header">
+      <section class="flex">
+         <a href="home.html" class="logo">NALANTI</a>
+   
+         <form id="search-form" class="search-form">
+            <input type="text" id="search-box" name="search_box" required placeholder="Search courses..." maxlength="100">
+            <button type="submit" class="fas fa-search"></button>
+         </form>
+   
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="toggle-btn" class="fas fa-sun"></div>
+         </div>
+   
+         <div class="profile">
+            <img src="" id="profile-pic" class="image" alt="Profile Picture">
+            <h3 class="name" id="profile-name">Student</h3>
+            <p class="role">Student</p>
+            <a href="profile.html" class="btn">View Profile</a>
+            <div class="flex-btn">
+               <a href="login.html" class="option-btn">Login</a>
+               <a href="register.html" class="option-btn">Register</a>
+            </div>
+         </div>
+      </section>
+   </header>   
+   
+   <div class="side-bar">
+      <div id="close-btn">
+         <i class="fas fa-times"></i>
+      </div>
+   
+      <div class="profile">
+         <img src="" id="sidebar-profile-pic" class="image" alt="Profile Picture">
+         <h3 class="name" id="sidebar-profile-name">Student</h3>
+         <p class="role">Student</p>
+         <a href="profile.html" class="btn">View Profile</a>
+      </div>
+
+</div>
+
+<section class="playlist-details">
+
+   <h1 class="heading">Playlist Details</h1>
+
+   <div class="row">
+
+      <div class="column">
+         <form id="save-playlist-form" class="save-playlist">
+            <button type="submit"><i class="far fa-bookmark"></i> <span>Save Playlist</span></button>
+         </form>
+   
+         <div class="thumb">
+            <img src="https://res.cloudinary.com/dvnxpluf0/image/upload/v1716541810/images_vjpeuc.jpg" alt="">
+            <span>10 videos</span>
+         </div>
+      </div>
+      <div class="column">
+         <div class="tutor">
+            <img src="https://res.cloudinary.com/dvnxpluf0/image/upload/v1716542022/pic-5_qiyn1n.jpg" alt="">
+            <div>
+               <h3>Ms. Siya</h3>
+            </div>
+         </div>
+   
+         <div class="details">
+            <h3>DBMS Tutorial</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum minus reiciendis, error sunt veritatis exercitationem deserunt velit doloribus itaque voluptate.</p>
+            <a href="teacher_profile.html" class="inline-btn">View Profile</a>
+         </div>
+      </div>
+   </div>
+
+</section>
+
+<section class="playlist-videos">
+
+   <h1 class="heading">Playlist Videos</h1>
+
+   <div class="box-container">
+
+      <a class="box" href="watch-video.html">
+         <i class="fas fa-play"></i>
+         <img src="https://res.cloudinary.com/dvnxpluf0/image/upload/v1716541810/images_vjpeuc.jpg" alt="">
+         <h3>DBMS (Part 01)</h3>
+      </a>
+
+      <a class="box" href="watch-video.html">
+         <i class="fas fa-play"></i>
+         <img src="https://res.cloudinary.com/dvnxpluf0/image/upload/v1716541810/images_vjpeuc.jpg" alt="">
+         <h3>DBMS (Part 02)</h3>
+      </a>
+
+      <a class="box" href="watch-video.html">
+         <i class="fas fa-play"></i>
+         <img src="https://res.cloudinary.com/dvnxpluf0/image/upload/v1716541810/images_vjpeuc.jpg" alt="">
+         <h3>DBMS (Part 03)</h3>
+      </a>
+
+      <a class="box" href="watch-video.html">
+         <i class="fas fa-play"></i>
+         <img src="https://res.cloudinary.com/dvnxpluf0/image/upload/v1716541810/images_vjpeuc.jpg" alt="">
+         <h3>DBMS (Part 04)</h3>
+      </a>
+
+      <a class="box" href="watch-video.html">
+         <i class="fas fa-play"></i>
+         <img src="https://res.cloudinary.com/dvnxpluf0/image/upload/v1716541810/images_vjpeuc.jpg" alt="">
+         <h3>DBMS (Part 05)</h3>
+      </a>
+
+      <a class="box" href="watch-video.html">
+         <i class="fas fa-play"></i>
+         <img src="https://res.cloudinary.com/dvnxpluf0/image/upload/v1716541810/images_vjpeuc.jpg" alt="">
+         <h3>DBMS (Part 06)</h3>
+      </a>
+
+   </div>
+
+</section>
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+<script>
+   document.getElementById('search-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      
+      const searchQuery = document.getElementById('search-box').value.trim().toLowerCase();
+   
+      // Mapping of search queries to corresponding course pages
+      const coursePages = {
+         'html': 'html.html',
+         'css': 'css.html',
+         'javascript': 'javascript.html',
+         'react': 'react.html',
+         'php': 'php.html',
+         'aiml': 'aiml.html',
+         'casa': 'casa.html',
+         'discrete structure': 'discrete_structure.html',
+         'dsa': 'dsa.html',
+         'computer architecture': 'computer_architecture.html',
+         'software engineering': 'software_engineering.html',
+         'dbms': 'dbms.html'
+      };
+   
+      // Redirect to the corresponding course page if it exists
+      if (coursePages[searchQuery]) {
+         window.location.href = coursePages[searchQuery];
+      } else {
+         alert('Course not found!');
+      }
+   });
+
+   document.addEventListener('DOMContentLoaded', function() {
+    const savePlaylistBtn = document.getElementById('save-playlist-form');
+
+    savePlaylistBtn.addEventListener('click', function() {
+        // Retrieve playlist information
+        const thumbnailSrc = document.querySelector('.thumb img').src;
+        const tutorName = document.querySelector('.tutor h3').textContent;
+        const playlistTitle = document.querySelector('.details h3').textContent;
+        const playlistDescription = document.querySelector('.details p').textContent;
+
+        // Create playlist object
+        const playlist = {
+            thumbnail: thumbnailSrc,
+            tutor: tutorName,
+            title: playlistTitle,
+            description: playlistDescription,
+            date: getDate()
+        };
+
+        // Load existing playlists from local storage
+        let savedPlaylists = JSON.parse(localStorage.getItem('savedPlaylists')) || [];
+
+        // Add the new playlist to the array
+        savedPlaylists.push(playlist);
+
+        // Save the updated playlists to local storage
+        localStorage.setItem('savedPlaylists', JSON.stringify(savedPlaylists));
+
+        alert('Playlist saved successfully!');
+    });
+
+    // Function to get current date in YYYY-MM-DD format
+    function getDate() {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+   // Retrieve the stored name and picture URL from localStorage
+   const name = localStorage.getItem('profileName') || 'Student';
+   const pic = localStorage.getItem('profilePic') || 'images/default-pic.jpg';
+
+   // Update the profile section in the header
+   document.getElementById('profile-name').textContent = name;
+   document.getElementById('profile-pic').src = pic;
+
+   // Update the profile section in the sidebar
+   document.getElementById('sidebar-profile-name').textContent = name;
+   document.getElementById('sidebar-profile-pic').src = pic;
+});
+   </script>
+   
+</body>
+</html>

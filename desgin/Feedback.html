@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Feedback Form</title>
+<link rel="stylesheet" type="text/css" href="Feedback.css">
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+<body>
+
+<div class="container">
+    <form id="feedbackForm">
+        <h1>Feedback Form</h1>
+        <div class="inputBox">
+            <input type="text" id="studentName" required>
+            <label>S t u d e n t N a m e</label>
+        </div>
+
+        <div class="inputBox">
+            <input type="tel" id="studentPhone" required>
+            <label>P h o n e N u m b e r</label>
+        </div>
+        
+        <div class="inputBox">
+            <input type="text" id="fatherName" required>
+            <label>F a t h e r 's N a m e</label>
+        </div>
+
+        <div class="inputBox">
+            <input type="email" id="studentEmail" required>
+            <label>E m a i l</label>
+        </div>
+        
+        <div class="inputBox">
+            <input type="text" id="feedbackType" required>
+            <label>F e e d b a c k T y p e</label>
+        </div>
+        
+        <div class="inputBox">
+            <input type="number" id="rating" min="0" max="10" required>
+            <label>R a t i n g ( 0 - 10 )</label>
+        </div>
+        
+        <div class="inputBox">
+            <input type="text" id="suggestions" required>
+            <label>S u g g e s t i o n s</label>
+        </div>
+        
+        <div class="inputBox">
+            <button type="submit">Submit Feedback</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.querySelectorAll('label').forEach(label => {
+        label.innerHTML = label.innerText.split(' ').map((letters, i) => {
+            return `<span style="transition-delay: ${i * 50}ms">${letters}</span>`;
+        }).join(' ');
+    });
+
+    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var studentName = document.getElementById('studentName').value;
+        var studentPhone = document.getElementById('studentPhone').value;
+        var fatherName = document.getElementById('fatherName').value;
+        var studentEmail = document.getElementById('studentEmail').value;
+        var feedbackType = document.getElementById('feedbackType').value;
+        var rating = document.getElementById('rating').value;
+        var suggestions = document.getElementById('suggestions').value;
+
+        console.log("Student Name: " + studentName);
+        console.log("Phone Number: " + studentPhone);
+        console.log("Father's Name: " + fatherName);
+        console.log("Email: " + studentEmail);
+        console.log("Feedback Type: " + feedbackType);
+        console.log("Rating: " + rating);
+        console.log("Suggestions: " + suggestions);
+
+        alert('Feedback submitted successfully!');
+    });
+</script>
+</body>
+</html>

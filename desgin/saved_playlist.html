@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Saved Playlists</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+   
+   <style>
+      /* Saved Playlists Section */
+.saved-playlists {
+   margin: 20px;
+}
+
+.saved-playlists .heading {
+   font-size: 28px;
+   margin-bottom: 20px;
+   text-align: center;
+}
+
+.box-container {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+   justify-content: center;
+}
+
+.box {
+   background: #fff;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   width: 300px;
+   transition: transform 0.3s;
+}
+
+.box:hover {
+   transform: translateY(-5px);
+}
+
+.box .tutor {
+   display: flex;
+   align-items: center;
+   margin-bottom: 15px;
+}
+
+.box .tutor img {
+   border-radius: 50%;
+   width: 50px;
+   height: 50px;
+   margin-right: 10px;
+}
+
+.box .tutor h3 {
+   margin: 0;
+   font-size: 18px;
+}
+
+.box .tutor span {
+   font-size: 14px;
+   color: #999;
+}
+
+.box .details h3 {
+   font-size: 20px;
+   margin-bottom: 10px;
+}
+
+.box .details p {
+   font-size: 16px;
+   color: #666;
+}
+   </style>
+
+</head>
+<body>
+
+   <header class="header">
+      <section class="flex">
+         <a href="home.html" class="logo">NALANTI</a>
+   
+         <form id="search-form" class="search-form">
+            <input type="text" id="search-box" name="search_box" required placeholder="Search courses..." maxlength="100">
+            <button type="submit" class="fas fa-search"></button>
+         </form>
+   
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="toggle-btn" class="fas fa-sun"></div>
+         </div>
+   
+         <div class="profile">
+            <img src="" id="profile-pic" class="image" alt="Profile Picture">
+            <h3 class="name" id="profile-name">Student</h3>
+            <p class="role">Student</p>
+            <a href="profile.html" class="btn">View Profile</a>
+            <div class="flex-btn">
+               <a href="login.html" class="option-btn">Login</a>
+               <a href="register.html" class="option-btn">Register</a>
+            </div>
+         </div>
+      </section>
+   </header>   
+   
+   <div class="side-bar">
+      <div id="close-btn">
+         <i class="fas fa-times"></i>
+      </div>
+   
+      <div class="profile">
+         <img src="" id="sidebar-profile-pic" class="image" alt="Profile Picture">
+         <h3 class="name" id="sidebar-profile-name">Student</h3>
+         <p class="role">Student</p>
+         <a href="profile.html" class="btn">View Profile</a>
+      </div>
+
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+   </nav>
+</div>
+
+<section class="saved-playlists">
+    <h1 class="heading">Saved Playlists</h1>
+    <div id="saved-playlists-container" class="box-container">
+       <!-- Saved playlists will be dynamically inserted here -->
+    </div>
+</section>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+<script>
+   document.getElementById('search-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      
+      const searchQuery = document.getElementById('search-box').value.trim().toLowerCase();
+   
+      // Mapping of search queries to corresponding course pages
+      const coursePages = {
+         'html': 'html.html',
+         'css': 'css.html',
+         'javascript': 'javascript.html',
+         'react': 'react.html',
+         'php': 'php.html',
+         'aiml': 'aiml.html',
+         'casa': 'casa.html',
+         'discrete structure': 'discrete_structure.html',
+         'dsa': 'dsa.html',
+         'computer architecture': 'computer_architecture.html',
+         'software engineering': 'software_engineering.html',
+         'dbms': 'dbms.html'
+      };
+   
+      // Redirect to the corresponding course page if it exists
+      if (coursePages[searchQuery]) {
+         window.location.href = coursePages[searchQuery];
+      } else {
+         alert('Course not found!');
+      }
+   });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const savedPlaylistsContainer = document.getElementById('saved-playlists-container');
+
+    // Load saved playlists from local storage
+    let savedPlaylists = JSON.parse(localStorage.getItem('savedPlaylists')) || [];
+
+    // Function to render saved playlists
+    function renderSavedPlaylists() {
+        savedPlaylistsContainer.innerHTML = ''; // Clear existing content
+
+        savedPlaylists.forEach((playlist, index) => {
+            const playlistBox = document.createElement('div');
+            playlistBox.classList.add('box');
+
+            playlistBox.innerHTML = `
+                <div class="tutor">
+                    <img src="${playlist.thumbnail}" alt="${playlist.title}">
+                    <div>
+                        <h3>${playlist.tutor}</h3>
+                        <span>${playlist.date}</span>
+                    </div>
+                </div>
+                <div class="details">
+                    <h3>${playlist.title}</h3>
+                    <p>${playlist.description}</p>
+                </div>
+                <button class="btn delete-btn" data-index="${index}">Delete</button>
+            `;
+
+            savedPlaylistsContainer.appendChild(playlistBox);
+        });
+
+        // Attach event listeners to delete buttons
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const index = this.getAttribute('data-index');
+                deletePlaylist(index);
+            });
+        });
+    }
+
+    // Function to delete a playlist
+    function deletePlaylist(index) {
+        savedPlaylists.splice(index, 1); // Remove the playlist from the array
+        localStorage.setItem('savedPlaylists', JSON.stringify(savedPlaylists)); // Update local storage
+        renderSavedPlaylists(); // Re-render the playlists
+    }
+
+    // Render saved playlists when the page loads
+    renderSavedPlaylists();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+   // Retrieve the stored name and picture URL from localStorage
+   const name = localStorage.getItem('profileName') || 'Student';
+   const pic = localStorage.getItem('profilePic') || 'images/default-pic.jpg';
+
+   // Update the profile section in the header
+   document.getElementById('profile-name').textContent = name;
+   document.getElementById('profile-pic').src = pic;
+
+   // Update the profile section in the sidebar
+   document.getElementById('sidebar-profile-name').textContent = name;
+   document.getElementById('sidebar-profile-pic').src = pic;
+});
+
+</script>
+
+</body>
+</html>
